@@ -30,16 +30,16 @@ class Chart():
                 self.round_stacks[player_name].append(player_stack)
 
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        save_path = f'testchart\\{self.player_number}players\\round{self.round_count}stack{timestamp}.png'
+        save_path = f'..\\result\\{self.player_number}players\\round{self.round_count}stack{timestamp}.png'
 
         players = list(self.round_stacks.keys())
         x_values = np.linspace(0, 1, self.round_count)
 
         player_colors = {
-            'RF': '#1f77b4',
-            'NC2':'#9467bd',
-            'NC': '#2ca02c',
-            'OC': '#d62728'
+            '1': '#1f77b4',
+            '2':'#9467bd',
+            '3': '#2ca02c',
+            '4': '#d62728'
         }
         
         if self.max_round==self.round_count or sum(1 for seat in round_state['seats'] if seat['stack'] != 0)==1:
@@ -47,7 +47,7 @@ class Chart():
 
             for i, player in enumerate(players):
                 stacks = self.round_stacks[player]
-                color = player_colors.get(player, 'gray')  # Get the color from the dictionary
+                color = player_colors.get(str(i+1), 'gray')  # Get the color from the dictionary
                 plt.plot(x_values, stacks, label=f'{player}', color=color,linewidth=10.0)
 
             plt.xlabel('Round',fontsize=30)

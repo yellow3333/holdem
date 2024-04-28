@@ -30,17 +30,17 @@ def run_poker_game():
 
     player_names = ["Player" + str(i) for i in range(1, player_number + 1)]
     config = setup_config(max_round=max_round, initial_stack=initial_stack, small_blind_amount=small_blind_amount)
-
-    for name in player_names:
+    for i in range (len(player_names)):
+        name = player_names[i]
         algorithm = player_algorithms[name].get()
         if algorithm == "RF_AutoAImodel":
-            config.register_player('RF', algorithm=RF_AutoAImodel())
+            config.register_player('P'+str(i+1)+' : RF', algorithm=RF_AutoAImodel())
         elif algorithm == "OC_AutoAImodel":
-            config.register_player('OC', algorithm=OC_AutoAImodel())
+            config.register_player('P'+str(i+1)+' : OC', algorithm=OC_AutoAImodel())
         elif algorithm == "NC_AutoAImodel":
-            config.register_player('NC', algorithm=NC_AutoAImodel())
+            config.register_player('P'+str(i+1)+' : NC', algorithm=NC_AutoAImodel())
         elif algorithm == "NC2_AutoAImodel":
-            config.register_player('NC2', algorithm=NC2_AutoAImodel())
+            config.register_player('P'+str(i+1)+' : NC2', algorithm=NC2_AutoAImodel())
     game_result = start_poker(config, verbose=1)
     print(game_result)
 
