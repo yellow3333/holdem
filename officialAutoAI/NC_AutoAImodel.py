@@ -487,17 +487,17 @@ class NC_AutoAImodel(BasePokerPlayer):
     
     def predict(self):
         if self.get_players()==3:
-            with open('E:\\1112-1121\\AI\\AI v.s AI\\AutoAI\\NCmodel\\model-3p\\model3.config', 'r') as json_file: #path
+            with open('..\\model\\NCmodel\\model-3p\\model3.config', 'r') as json_file: #path
                 json_string = json_file.read()
             model = Sequential()
             model = model_from_json(json_string)
-            model.load_weights('E:\\1112-1121\\AI\\AI v.s AI\\AutoAI\\NCmodel\\model-3p\\model3.weight', by_name=False) #path
+            model.load_weights('..\\model\\NCmodel\\model-3p\\model3.weight', by_name=False) #path
         elif self.get_players()==4:
-            with open('E:\\1112-1121\\AI\\AI v.s AI\\AutoAI\\NCmodel\\model-4p\\model4.config', 'r') as json_file: #path
+            with open('..\\model\\NCmodel\\model-4p\\model4.config', 'r') as json_file: #path
                 json_string = json_file.read()
             model = Sequential()
             model = model_from_json(json_string)
-            model.load_weights('E:\\1112-1121\\AI\\AI v.s AI\\AutoAI\\NCmodel\\model-4p\\model4.weight', by_name=False) #path
+            model.load_weights('..\\model\\NCmodel\\model-4p\\model4.weight', by_name=False) #path
         
         input=np.array(self.game_data)
         X2 = input.astype('float32')  

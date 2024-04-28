@@ -139,11 +139,11 @@ class OC_AutoAImodel(BasePokerPlayer):  # Do not forget to make parent class as 
             predict_action={'action':'fold' ,"amount":0}
             return predict_action
         else:
-            with open('E:\\1112-1121\\AI\\AI v.s AI\\AutoAI\\OCmodel\\model.config', 'r') as text_file: #path
+            with open('..\\model\\OCmodel\\model.config', 'r') as text_file: #path
                 json_string = text_file.read()
             model = Sequential()
             model = model_from_json(json_string)
-            model.load_weights('E:\\1112-1121\\AI\\AI v.s AI\\AutoAI\\OCmodel\\model.weight', by_name=False) #path
+            model.load_weights('..\\model\\OCmodel\\model.weight', by_name=False) #path
             # read my data
             input=np.array(self.game_data)
             X2 = input.astype('float32')  

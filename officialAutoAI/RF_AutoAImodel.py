@@ -273,7 +273,7 @@ class RF_AutoAImodel(BasePokerPlayer):  # Do not forget to make parent class as 
         
         
     def predict(self):
-        model = joblib.load(r"E:\1112-1121\AI\AI v.s AI\AutoAI\RFmodel\my_random_forest.joblib")#path
+        model = joblib.load(r"..\model\RFmodel\my_random_forest.joblib")#path
         action_number= int(float(model.predict(np.array(self.game_data).reshape(1, -1))))
         #print("RF predict number:",action_number)
         predict_action=self.get_predict_action(action_number)
