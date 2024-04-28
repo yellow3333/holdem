@@ -91,9 +91,16 @@ class RF_AutoAImodel(BasePokerPlayer):  # Do not forget to make parent class as 
         return self.player_count
     
     def get_position(self,next_player_position):
+        #next player 0 1
+        #this player 1 0
+        if self.get_players()==2:
+            position_array=np.array([1,0])
+            self.position = position_array[next_player_position]
+            return position_array[next_player_position]
+            
         #next player 0 1 2
         #this player 2 0 1
-        if self.get_players()==3:
+        elif self.get_players()==3:
             position_array=np.array([2,0,1])
             self.position=position_array[next_player_position]
             return position_array[next_player_position]

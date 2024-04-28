@@ -11,11 +11,13 @@ from officialAutoAI.NC_AutoAImodel import *
 from officialAutoAI.OC_AutoAImodel import *
 from officialAutoAI.RF_AutoAImodel import *
 from officialAutoAI.NC2_AutoAImodel import *
+from officialAutoAI.console_player import *
 
 default_max_round = 10
 default_init_stack = 10000
 default_min_blind = 10
 default_player_num = 3
+bot = ["RF_AutoAImodel", "OC_AutoAImodel", "NC_AutoAImodel","NC2_AutoAImodel","console_player"]
 
 
 # Create a function to run the poker game
@@ -33,6 +35,7 @@ def run_poker_game():
     for i in range (len(player_names)):
         name = player_names[i]
         algorithm = player_algorithms[name].get()
+        print(algorithm)
         if algorithm == "RF_AutoAImodel":
             config.register_player('P'+str(i+1)+' : RF', algorithm=RF_AutoAImodel())
         elif algorithm == "OC_AutoAImodel":
@@ -64,7 +67,7 @@ def show_algorithm_selection():
         player_name = "Player" + str(i)
         algorithm_label = tk.Label(frame, text=f"{player_name} Algorithm:",font=("Helvetica", 15, "bold"))
         algorithm_label.grid(row=i , column=0, columnspan=1)
-        algorithm_combobox = ttk.Combobox(frame, values=["RF_AutoAImodel", "OC_AutoAImodel", "NC_AutoAImodel","NC2_AutoAImodel"],font=("Helvetica", 15))
+        algorithm_combobox = ttk.Combobox(frame, values=bot ,font=("Helvetica", 15))
         algorithm_combobox.set("RF_AutoAImodel")
         algorithm_combobox.grid(row=i, column=1,columnspan=1)
         player_algorithms[player_name] = algorithm_combobox
