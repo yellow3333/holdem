@@ -12,6 +12,10 @@ from officialAutoAI.OC_AutoAImodel import *
 from officialAutoAI.RF_AutoAImodel import *
 from officialAutoAI.NC2_AutoAImodel import *
 
+default_max_round = 10
+default_init_stack = 10000
+default_min_blind = 10
+default_player_num = 3
 
 
 # Create a function to run the poker game
@@ -108,21 +112,25 @@ frame.place(relx=0.5, rely=0.6, anchor="center")
 max_round_label = ttk.Label(frame, text="Max round :",width=20)
 max_round_label.grid(row=0, column=0, sticky="e")
 max_round_entry = ttk.Entry(frame)
+max_round_entry.insert(0, default_max_round)
 max_round_entry.grid(row=0, column=1)
 
 initial_stack_label = ttk.Label(frame, text="Initial stack:",width=20)
 initial_stack_label.grid("",row=1, column=0, sticky="e")
 initial_stack_entry = ttk.Entry(frame)
+initial_stack_entry.insert(0, default_init_stack)
 initial_stack_entry.grid(row=1, column=1)
 
 small_blind_label = ttk.Label(frame, text="Small blind:",width=20)
 small_blind_label.grid(row=2, column=0, sticky="e")
 small_blind_entry = ttk.Entry(frame)
+small_blind_entry.insert(0, default_min_blind)
 small_blind_entry.grid(row=2, column=1)
 
 player_number_label = ttk.Label(frame, text="Player number:",width=20)
 player_number_label.grid(row=3, column=0, sticky="e")
 player_number_entry = ttk.Entry(frame)
+player_number_entry.insert(0, default_player_num)
 player_number_entry.grid(row=3, column=1)
 
 note_label = ttk.Label(frame, text="Note: player number should be 3 to 4 players",font=("Helvetica", 10, "bold"))
