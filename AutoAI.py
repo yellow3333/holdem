@@ -12,12 +12,13 @@ from officialAutoAI.OC_AutoAImodel import *
 from officialAutoAI.RF_AutoAImodel import *
 from officialAutoAI.NC2_AutoAImodel import *
 from officialAutoAI.console_player import *
+from officialAutoAI.random_player import *
 
 default_max_round = 10
 default_init_stack = 10000
 default_min_blind = 10
 default_player_num = 3
-bot = ["RF_AutoAImodel", "OC_AutoAImodel", "NC_AutoAImodel","NC2_AutoAImodel","console_player"]
+bot = ["RF_AutoAImodel", "OC_AutoAImodel", "NC_AutoAImodel","NC2_AutoAImodel","console_player","random_player"]
 
 
 # Create a function to run the poker game
@@ -35,7 +36,6 @@ def run_poker_game():
     for i in range (len(player_names)):
         name = player_names[i]
         algorithm = player_algorithms[name].get()
-        print(algorithm)
         if algorithm == "RF_AutoAImodel":
             config.register_player('P'+str(i+1)+' : RF', algorithm=RF_AutoAImodel())
         elif algorithm == "OC_AutoAImodel":
@@ -44,6 +44,10 @@ def run_poker_game():
             config.register_player('P'+str(i+1)+' : NC', algorithm=NC_AutoAImodel())
         elif algorithm == "NC2_AutoAImodel":
             config.register_player('P'+str(i+1)+' : NC2', algorithm=NC2_AutoAImodel())
+        elif algorithm == "console_player":
+            config.register_player('P'+str(i+1)+' : console', algorithm=ConsolePlayer())
+        else :
+            config.register_player('P'+str(i+1)+' : random', algorithm=RandomPlayer())
     game_result = start_poker(config, verbose=1)
     print(game_result)
 
@@ -74,6 +78,9 @@ def show_algorithm_selection():
 
     global player_selection_frame
     player_selection_frame = frame
+
+
+
 
 
 root = tk.Tk()

@@ -1,6 +1,8 @@
 import pypokerengine.utils.visualize_utils as U
 from pypokerengine.players import BasePokerPlayer
 
+from testchart.chart import *
+
 class ConsolePlayer(BasePokerPlayer):
 
   def __init__(self, input_receiver=None):
@@ -32,10 +34,12 @@ class ConsolePlayer(BasePokerPlayer):
     self.__wait_until_input()
 
   def __wait_until_input(self):
-    raw_input("Enter some key to continue ...")
+    # raw_input("Enter some key to continue ...")
+    input("Enter some key to continue ...")
 
   def __gen_raw_input_wrapper(self):
-    return lambda msg: raw_input(msg)
+    # return lambda msg: raw_input(msg)
+    return lambda msg: input(msg)
 
   def __receive_action_from_console(self, valid_actions):
     flg = self.input_receiver('Enter f(fold), c(call), r(raise).\n >> ')

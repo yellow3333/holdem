@@ -12,7 +12,8 @@ class RF_AutoAImodel(BasePokerPlayer):  # Do not forget to make parent class as 
     #  we define the logic to make an action through this method. (so this method would be the core of your AI)
     def declare_action(self, valid_actions, hole_card, round_state):
         # valid_actions format => [raise_action_info, call_action_info, fold_action_info]
-        print("valid actions in RF: ",valid_actions)
+        # print("valid actions in RF: ",valid_actions)
+        #no note
         if self.first_action==1:
             self.get_position(round_state['next_player'])
             self.first_action=self.first_action+1
@@ -20,10 +21,11 @@ class RF_AutoAImodel(BasePokerPlayer):  # Do not forget to make parent class as 
         action_predict= self.predict_action(valid_actions)
         action=action_predict['action']
         amount=action_predict['amount']
-        print("action predict in rf")
-        print(self.game_data)
+        # print("action predict in rf")
+        # no note
+        # print(self.game_data)
+        # no note
         return action, amount   # action returned here is sent to the poker engine
-
 
     def receive_game_start_message(self, game_info):
         self.game_data = np.zeros(15)

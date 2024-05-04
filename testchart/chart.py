@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
 
+from testchart.chart import *
+# 製圖
+
 class Chart():
     def __init__(self, player_number,max_round):
         self.player_wins = {}
@@ -23,6 +26,7 @@ class Chart():
 
         for player in round_state['seats']:
             player_name = player['name']
+            print(player_name)
             player_stack = player['stack']
             if player_name not in self.round_stacks:
                 self.round_stacks[player_name] = [player_stack]
