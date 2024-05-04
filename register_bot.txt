@@ -1,0 +1,13 @@
+auto_AI.py 需先register
+在自己的檔案用好position設定
+
+要設定 
+1. declare action
+2. recive_game_start_message
+3. receive_round_start_message
+4. receive_round_result_message
+可參考 RandomPlayer
+並且寫 
+get_position
+get_players
+set_players
