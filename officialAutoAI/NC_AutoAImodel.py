@@ -490,6 +490,12 @@ class NC_AutoAImodel(BasePokerPlayer):
         return predict_action
     
     def predict(self):
+        if self.get_players()==2:
+            with open('..\\model\\NCmodel\\model-3+4p\\model3+4.config', 'r') as json_file: #path
+                json_string = json_file.read()
+            model = Sequential()
+            model = model_from_json(json_string)
+            model.load_weights('..\\model\\NCmodel\\model-3+4p\\model3+4.weight', by_name=False) #path
         if self.get_players()==3:
             with open('..\\model\\NCmodel\\model-3p\\model3.config', 'r') as json_file: #path
                 json_string = json_file.read()
